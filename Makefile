@@ -22,7 +22,7 @@ build_sandbox:
 	sites/sandbox/manage.py clear_index --noinput
 	sites/sandbox/manage.py update_index catalogue
 
-sandbox: install build_sandbox
+sandbox: build_sandbox
 
 geoip:
 	wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
@@ -52,9 +52,9 @@ build_demo:
 
 demo: install build_demo
 
-us_site: install
+us_site: 
 	# Install additional requirements
-	pip install -r requirements_us.txt
+	#pip install -r requirements_us.txt
 	# Create database
 	sites/us/manage.py reset_db --router=default --noinput
 	sites/us/manage.py migrate
